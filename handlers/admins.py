@@ -44,7 +44,7 @@ async def update_admin(client, message):
     for u in new_ads:
         new_admins.append(u.user.id)
     admins[message.chat.id] = new_admins
-    await message.reply_text("✅ Bot **reloaded correctly !**\n✅ **Admin list** has been **updated !**")
+    await message.reply_text("✅ Bot **Doğru bir şekilde yeniden yüklendi!**\n✅ **Admin list** has been **updated !**")
 
 
 # Control Menu Of Player
@@ -100,7 +100,7 @@ async def durdur(_, message: Message):
     if (chat_id not in callsmusic.pytgcalls.active_calls) or (
         callsmusic.pytgcalls.active_calls[chat_id] == "paused"
     ):
-        await message.reply_text("❗ nothing in streaming!")
+        await message.reply_text("❗ akışta birşey yok!")
     else:
         callsmusic.pytgcalls.pause_stream(chat_id)
         await message.reply_text("▶️ music durduruldu!")
@@ -174,9 +174,9 @@ async def authenticate(client, message):
         new_admins = admins[message.chat.id]
         new_admins.append(message.reply_to_message.from_user.id)
         admins[message.chat.id] = new_admins
-        await message.reply("🟢 user authorized.\n\nfrom now on, that's user can use the admin commands.")
+        await message.reply("🟢 kullanıcı yetkilendirilmiştir.\n\nbundan böyle, bu kullanıcı admin komutlarını kullanabilir.")
     else:
-        await message.reply("✅ user already authorized!")
+        await message.reply("✅ kullanıcı zaten yetkilendirilmiş!")
 
 
 @Client.on_message(command("deauth") & other_filters)
@@ -190,9 +190,9 @@ async def deautenticate(client, message):
         new_admins = admins[message.chat.id]
         new_admins.remove(message.reply_to_message.from_user.id)
         admins[message.chat.id] = new_admins
-        await message.reply("🔴 user deauthorized.\n\nfrom now that's user can't use the admin commands.")
+        await message.reply("🔴 kullanıcı yetkilendirilmiştir.\n\nbundan böyle, bu kullanıcı admin komutlarını kullanamaz.")
     else:
-        await message.reply("✅ user already deauthorized!")
+        await message.reply("✅ kullanıcı zaten yetkilendirilmiş!")
 
 
 # this is a anti cmd feature
