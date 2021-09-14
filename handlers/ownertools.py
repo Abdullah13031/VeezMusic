@@ -48,7 +48,7 @@ async def broadcast_handler_open(_, m: Message):
 
 # Ban User
 @Client.on_message(filters.private & filters.command("block") & filters.user(OWNER_ID))
-async def block(c: Client, m: Message):
+async def ban(c: Client, m: Message):
     if len(m.command) == 1:
         await m.reply_text(
             f"this command for ban user, read /help for more info !",
