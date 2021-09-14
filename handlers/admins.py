@@ -114,7 +114,7 @@ async def devam(_, message: Message):
     if (chat_id not in callsmusic.pytgcalls.active_calls) or (
         callsmusic.pytgcalls.active_calls[chat_id] == "playing"
     ):
-        await message.reply_text("❗ nothing is paused!")
+        await message.reply_text("❗ hiç birşey duraklatılmadı!")
     else:
         callsmusic.pytgcalls.resume_stream(chat_id)
         await message.reply_text("⏸ music devam ediyor!")
@@ -126,7 +126,7 @@ async def devam(_, message: Message):
 async def son(_, message: Message):
     chat_id = get_chat_id(message.chat)
     if chat_id not in callsmusic.pytgcalls.active_calls:
-        await message.reply_text("❗ nothing in streaming!")
+        await message.reply_text("❗ akışta birşey yok!")
     else:
         try:
             queues.clear(chat_id)
@@ -157,7 +157,7 @@ async def atla(_, message: Message):
 
     qeue = que.get(chat_id)
     if qeue:
-        Atla = qeue.pop(0)
+        Skip = qeue.pop(0)
     if not qeue:
         return
     await message.reply_text(f"⫸ atlatılan şarkı : **{atla[0]}**\n⫸ çalan şarkı : **{qeue[0][0]}**")
